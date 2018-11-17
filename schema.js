@@ -54,7 +54,37 @@ const RootQuery= new GraphQLObjectType({
     }
 });
 
+const mutation = new GraphQLObjectType({
+    name: 'MutationAdd',
+    fields:{
+        addTask: {
+            type: ToDoType,
+            args:{
+                taskNum:{
+                    name: 'Task Number',
+                    type: new GraphQLNonNull(GraphQLInt)
+                },
+                task:{
+                    name: 'Task Description',
+                    type: new GraphQLNonNull(GraphQLString)
+                },
+                progress:{
+                    name: 'Task Status',
+                    type: new GraphQLNonNull(GraphQLString)
+                },
+                difficulty:{
+                    name: 'Task Difficulty out of 10',
+                    type: new GraphQLNonNull(GraphQLInt)
+                }
+            },
+            resolve(parentValue, args){
+                return tasks
+            }
+        }
+    }
+})
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation
 });
