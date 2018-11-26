@@ -24,7 +24,7 @@ app.use('/graphql',
 app.use(express.static('public'));
 
 // Connect to the Mongo DB
-const MONGODB_URI = process.env.MONGODB_URI; // need to add OR for the DB on the net
+const MONGODB_URI = 'mongodb://localhost:27017/test';
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
