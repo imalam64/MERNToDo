@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DoComp from './Components/DoComp/DoComp';
+import DoingComp from './Components/DoingComp/DoingComp';
+import DoneComp from './Components/DoneComp/DoneComp';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <h1>Welcome to the best To-Do List!</h1>
+        <DoComp />
+        <DoingComp />
+        <DoneComp />
       </div>
     );
   }
