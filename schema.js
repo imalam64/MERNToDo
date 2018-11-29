@@ -1,4 +1,6 @@
 //const axios = require('axios');
+
+
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -10,11 +12,7 @@ const {
 
 
 // Hardcoded data
-const tasks = [
-    {taskNum: 1, task: "Code More", progress: "Doing", difficulty: 6},
-    {taskNum: 2, task: "Read More", progress: "Do", difficulty: 4},
-    {taskNum: 3, task: "Workout More", progress: "Done", difficulty: 9}
-];
+const tasks = require('./models/toDo')
 
 
 // Task Type
