@@ -1,3 +1,3 @@
-Saw jobs that were asking for experience with GraphQL. I had no clue what it was, so I decided to create this app as practice.
+**This simple To-Do List will integrate Node, Express, React, Redux, and MongoDB**
 
-**This simple To-Do List will integrate Node, Express, React, MongoDB and GraphQL**
+This application is being made following an example tutorial by Brad Traversy's "Learn The MERN Stack" on YouTube.
