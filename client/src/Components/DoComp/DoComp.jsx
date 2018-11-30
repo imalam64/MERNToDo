@@ -5,6 +5,9 @@ import {Card, CardContent, List} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+import { getToDos } from '../../actions/toDoActions';
+import PropTypes from 'prop-types';
 
 const styles = {
   card: {
@@ -27,17 +30,13 @@ const styles = {
 };
 
 class DoComp extends Component {
-  state = {
-    toDo: [
-      { id: uuid(), task: 'Practice Code'},
-      { id: uuid(), task: 'Make Money'},
-      { id: uuid(), task: 'Apply to Jobs'},
-      { id: uuid(), task: 'Laundry'},
-    ]
+
+  componentDidMount() {
+    this.props.getToDos();
   }
 
   render() {
-    const { toDo } = this.state;
+    const { toDo } = this.props.toDo;
     const { classes } = this.props;
 
     return (
@@ -82,4 +81,15 @@ class DoComp extends Component {
   }
 }
 
-export default withStyles(styles)(DoComp);
+DoComp.propTypes = {
+  getToDos: PropTypes.func.isRequired,
+  toDo: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  toDo: state.toDo
+});
+
+export default withStyles(styles)(
+  connect(mapStateToProps, { getToDos })(DoComp)
+  );
