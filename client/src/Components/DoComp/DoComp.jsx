@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
 import { withStyles } from '@material-ui/core/styles';
 import {Card, CardContent, List} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
-import { getToDos } from '../../actions/toDoActions';
+import { getToDos, deleteToDo } from '../../actions/toDoActions';
 import PropTypes from 'prop-types';
+import AddToDo from '../AddToDo/AddToDo';
 
 const styles = {
   card: {
@@ -35,24 +35,17 @@ class DoComp extends Component {
     this.props.getToDos();
   }
 
+  onDeleteClick = (id) => {
+    this.props.deleteToDo(id);
+  }
+
   render() {
     const { toDo } = this.props.toDo;
     const { classes } = this.props;
 
     return (
       <div>
-        <Button
-          variant="contained"
-          color ='primary'
-          onClick={()=>{
-          const task = prompt('Enter To Do');
-          if(task){
-            this.setState(state => ({
-              toDo: [...state.toDo, { id: uuid(), task }]
-            }));
-          }
-        }}> Add a "To Do"!</Button>
-
+        <AddToDo />
         <List>
           {toDo.map(({ id, task}) => (
             <ListItem key={id} timeout={500}>
@@ -63,11 +56,7 @@ class DoComp extends Component {
                     variant="contained"
                     color="secondary"
                     size="small"
-                    onClick={() => {
-                      this.setState(state => ({
-                        toDo: state.toDo.filter( toDo => toDo.id !== id)
-                      }));
-                    }}
+                    onClick={this.onDeleteClick.bind(this, id)}
                   >&times;
                   </Button>
                   <Typography>{task}</Typography>
@@ -91,5 +80,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default withStyles(styles)(
-  connect(mapStateToProps, { getToDos })(DoComp)
+  connect(mapStateToProps, 
+    { getToDos, deleteToDo }
+    )(DoComp)
   );

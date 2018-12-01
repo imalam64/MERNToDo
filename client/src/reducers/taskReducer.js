@@ -15,7 +15,17 @@ export default function(state = initialState, action){
         case GET_TODOS:
             return {
                 ...state
-            }
+            };
+        case DELETE_TODO:
+            return {
+                ...state,
+                toDo: state.toDo.filter( toDo => toDo.id !== action.payload)
+            };
+        case ADD_TODO:
+        return {
+            ...state,
+            toDo: [action.payload, ...state.toDo]
+        };
         default:
             return state;
     }
