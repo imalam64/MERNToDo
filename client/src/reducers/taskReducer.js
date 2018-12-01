@@ -28,6 +28,11 @@ export default function(state = initialState, action){
                 ...state,
                 loading: true
             }
+        case UPDATE_TODO:
+            return{
+                ...state,
+                toDo: state.toDo.filter( toDo => toDo._id !==action.payload)
+            };
         default:
             return state;
     }
