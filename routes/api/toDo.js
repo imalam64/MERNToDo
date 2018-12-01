@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 // @access  Public 
 router.post('/', (req, res) => {
     const newToDo = new ToDo({
-        taskNum: req.body.taskNum,
+        //taskNum: req.body.taskNum,
         task: req.body.task,
-        progress: req.body.progress,
-        difficulty: req.body.difficulty
+        //progress: req.body.progress,
+        //difficulty: req.body.difficulty
     })
 
     newToDo.save().then(toDo => res.json(toDo));

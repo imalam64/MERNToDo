@@ -8,7 +8,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { connect } from 'react-redux';
 import { addToDo } from '../../actions/toDoActions';
-import uuid from 'uuid';
 
 class AddToDo extends Component {
     state = {
@@ -32,7 +31,6 @@ class AddToDo extends Component {
         e.preventDefault();
 
         const newToDo = {
-            id: uuid(),
             task: this.state.name
         }
 

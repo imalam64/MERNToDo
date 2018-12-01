@@ -47,8 +47,8 @@ class DoComp extends Component {
       <div>
         <AddToDo />
         <List>
-          {toDo.map(({ id, task}) => (
-            <ListItem key={id} timeout={500}>
+          {toDo.map(({ _id, task}) => (
+            <ListItem key={_id} timeout={500}>
               <Card className={classes.card}>
                 <CardContent>
                   <Button
@@ -56,7 +56,7 @@ class DoComp extends Component {
                     variant="contained"
                     color="secondary"
                     size="small"
-                    onClick={this.onDeleteClick.bind(this, id)}
+                    onClick={this.onDeleteClick.bind(this, _id)}
                   >&times;
                   </Button>
                   <Typography>{task}</Typography>
