@@ -38,12 +38,11 @@ export const deleteToDo = id => dispatch => {
 export const updateToDo = id => dispatch => {
     axios
     .put(`/api/toDo/${id}`)
-    .then(
-        res =>
-        dispatch({
-            type: UPDATE_TODO,
-            payload: id
-        })
+    .then(res =>
+    dispatch({
+        type: UPDATE_TODO,
+        payload: id
+    })
     )
 }
 

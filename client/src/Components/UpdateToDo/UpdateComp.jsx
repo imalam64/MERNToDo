@@ -30,11 +30,9 @@ class UpdateComp extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        const update = {
-            task: this.state.name
-        }
+        const update = this.props._id;
 
-        //Add toDo via addToDo action
+        //Add toDo via updateToDo action
         this.props.updateToDo(update)
 
         this.handleClose();
@@ -46,7 +44,7 @@ class UpdateComp extends Component {
             <Button
             variant="contained"
             color ='primary'
-            onClick={this.handleClickOpen}> Add New To Do! </Button>
+            onClick={this.handleClickOpen}> Update... </Button>
             <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
@@ -55,14 +53,14 @@ class UpdateComp extends Component {
                 <DialogTitle id="form-dialog-title"> Add To Do... </DialogTitle>
                 <DialogContent>
                 <DialogContentText>
-                    Please provide information on the task you want to complete:
+                    Please provide information on the task you want to update:
                 </DialogContentText>
                 <TextField
                     autoFocus
                     margin="dense"
                     name= "name"
-                    id='toDo'
-                    label="Task"
+                    id= {this.props._id}
+                    label= {this.props.task}
                     type="text"
                     onChange={this.onChange}
                     fullWidth
@@ -73,7 +71,7 @@ class UpdateComp extends Component {
                     Cancel
                 </Button>
                 <Button onClick={this.onSubmit} color="primary">
-                   Add
+                   Update
                 </Button>
                 </DialogActions>
             </Dialog>

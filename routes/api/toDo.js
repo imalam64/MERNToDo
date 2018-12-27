@@ -32,23 +32,17 @@ router.post('/', (req, res) => {
 // @access  Public 
 router.delete('/:id', (req, res) => {
         ToDo.findById(req.params.id)
-        .then(toDo => toDo.remove().then(() => res.json( {success: true })))
-        .catch(err => res.status(404).json({ success: false }));
+        .then(toDo => toDo.remove().then(() => res.json( {success: true } )))
+        .catch(err => res.status(404).json( {success: false } ));
 });
 
 // @route   UPDATE api/toDo/:id
 // @desc    Update a to do
 // @access  Public 
 router.put('/:id', (req, res) => {
-   ToDo.findById(req.params.id, function (err, toDo) {
-        if (err) return res.status(404).json({ success: 'false1' });
-      
-        toDo.set({ task: req.body.task });
-        toDo.save(function (err, updatedToDo) {
-          if (err) return res.status(404).json({ success: 'false2' });
-          res.send(updatedToDo);
-        });
-      });
+        ToDo.findById(req.params.id)
+        .then(toDo => toDo.set({ task: req.body.task }).then(() => res.json( {success: true } )))
+        .catch(err => res.status(404).json( {success: false} ));
 });
 
 

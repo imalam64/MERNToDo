@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { getToDos, deleteToDo } from '../../actions/toDoActions';
 import PropTypes from 'prop-types';
 import AddToDo from '../AddToDo/AddToDo';
+import UpdateComp from '../UpdateToDo/UpdateComp';
 
 const styles = {
   card: {
@@ -59,6 +60,7 @@ class DoComp extends Component {
                     onClick={this.onDeleteClick.bind(this, _id)}
                   >&times;
                   </Button>
+                  <UpdateComp id={_id} task={task}/>
                   <Typography>{task}</Typography>
                 </CardContent>
               </Card>
