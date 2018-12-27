@@ -30,12 +30,12 @@ class UpdateComp extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-        const newToDo = {
+        const update = {
             task: this.state.name
         }
 
         //Add toDo via addToDo action
-        this.props.addToDo(newToDo)
+        this.props.updateToDo(update)
 
         this.handleClose();
     }

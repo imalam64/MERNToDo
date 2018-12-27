@@ -11,7 +11,7 @@ import AddToDo from '../AddToDo/AddToDo';
 
 const styles = {
   card: {
-    width: 500,
+    width: 250,
   },
   bullet: {
     display: 'inline-block',
